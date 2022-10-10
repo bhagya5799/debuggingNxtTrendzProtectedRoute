@@ -24,7 +24,6 @@ class LoginForm extends Component {
     const {history} = this.props
     Cookies.set('jwt_token', jwtToken, {expires: 30})
     history.replace('/')
-    return <Redirect to="/" />
   }
 
   onSubmitFailure = errorMsg => {
@@ -38,7 +37,7 @@ class LoginForm extends Component {
     const url = 'https://apis.ccbp.in/login'
     const options = {
       method: 'POST',
-      data: JSON.stringify(userDetails),
+      body: JSON.stringify(userDetails),
     }
     const response = await fetch(url, options)
     const data = await response.json()
